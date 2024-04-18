@@ -17,8 +17,6 @@ import lombok.Setter;
 @Builder
 @IdClass(PlayersId.class)
 public class PlayersEntity {
-
-
     
     @Id
     @ManyToOne
