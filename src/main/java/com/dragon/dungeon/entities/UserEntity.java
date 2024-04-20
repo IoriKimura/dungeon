@@ -27,12 +27,12 @@ public class UserEntity {
     @UuidGenerator
     private UUID userId;
 
-    @Column(name = "uName", nullable = false)
+    @Column(name = "u_name", nullable = false)
     private String uName;
     
-    @Column(name = "uMail", nullable = false)
+    @Column(name = "u_mail", nullable = false)
     private String uMail;
 
-    @Column(name = "uPassword", nullable = false)
+    @Column(name = "u_password", nullable = false)
     private String uPwd;
 }

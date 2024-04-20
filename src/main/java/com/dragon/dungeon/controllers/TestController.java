@@ -2,6 +2,8 @@ package com.dragon.dungeon.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dragon.dungeon.dto.models.UserModel;
+import com.dragon.dungeon.entities.UserEntity;
 import com.dragon.repositories.UserRepo;
 
 
@@ -19,8 +21,9 @@ public class TestController {
     private final UserRepo userRepo;
 
     @GetMapping("")
-    public String getUserList(){
-        return userRepo.findAll().toString();
+    public UserEntity getUserList(){
+
+        return userRepo.findAll().get(0);
     } 
 
     @GetMapping("/info")
