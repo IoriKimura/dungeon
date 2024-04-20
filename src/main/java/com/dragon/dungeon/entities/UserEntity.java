@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -19,18 +20,19 @@ import lombok.Setter;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserEntity {
     
     @Id
     @UuidGenerator
     private UUID userId;
 
-    @Column(name = "uName", nullable = false)
+    @Column(name = "u_name", nullable = false)
     private String uName;
     
-    @Column(name = "uMail", nullable = false)
+    @Column(name = "u_mail", nullable = false)
     private String uMail;
 
-    @Column(name = "uPassword", nullable = false)
+    @Column(name = "u_password", nullable = false)
     private String uPwd;
 }
