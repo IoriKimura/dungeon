@@ -1,4 +1,4 @@
-package com.dragon.Repositories;
+package com.dragon.repositories;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.dragon.dungeon.entities.UserEntity;
 
+
 @Repository
 public interface UserRepo extends JpaRepository<UserEntity, UUID>{
 
-    Optional<UserEntity> findByEmail(String email);
+    Optional<UserEntity> findByuMail(String uMail);
 }
     
