@@ -2,7 +2,6 @@ package com.dragon.dungeon.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dragon.dungeon.dto.models.UserModel;
 import com.dragon.dungeon.entities.UserEntity;
 import com.dragon.repositories.UserRepo;
 

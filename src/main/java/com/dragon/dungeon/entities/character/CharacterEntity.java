@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatacterEntity {
+public class CharacterEntity {
 
     @Id
     @UuidGenerator
@@ -28,27 +28,27 @@ public class ChatacterEntity {
     @JoinColumn(name = "owner_id", nullable = false)
     private UserEntity ownerId;
     
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stats_id", nullable = false)
     private StatsEntity stratsId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "throws_id", nullable = false)
     private SavingThrowsEntity throwsId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "skills_id", nullable = false)
     private SkillsEntity skillsId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id", nullable = false)
     private InventoryEntity inventoryId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attack_id", nullable = false)
     private AttackSpellsEntity attackId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feature_id", nullable = false)
     private FeaturesEntity featuresId;
 
