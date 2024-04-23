@@ -12,6 +12,8 @@ import com.dragon.dungeon.dao.ThrowsDao;
 import com.dragon.dungeon.dao.UserDao;
 import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
 import com.dragon.dungeon.dto.request.AddCharacterRequest;
+import com.dragon.dungeon.dto.request.CollectionRequest;
+import com.dragon.dungeon.dto.response.CollectionResponse;
 import com.dragon.dungeon.entities.UserEntity;
 import com.dragon.dungeon.entities.character.AttackSpellsEntity;
 import com.dragon.dungeon.entities.character.CharacterEntity;
@@ -20,8 +22,6 @@ import com.dragon.dungeon.entities.character.InventoryEntity;
 import com.dragon.dungeon.entities.character.SavingThrowsEntity;
 import com.dragon.dungeon.entities.character.SkillsEntity;
 import com.dragon.dungeon.entities.character.StatsEntity;
-import com.dragon.dungeon.repositories.UserRepo;
-import com.dragon.dungeon.services.stats.StatsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -78,6 +78,13 @@ public class CharacterServiceImpl implements CharacterService {
             .build();
 
         return characterDao.saveCharacter(character);
+    }
+
+    @Override
+    public CollectionResponse getCollection(CollectionRequest request) {
+        return CollectionResponse.builder()
+        .collection(characterDao.getCollection(request.getUMail()))
+        .build();
     }
     
 }
