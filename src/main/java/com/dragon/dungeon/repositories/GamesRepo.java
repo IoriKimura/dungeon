@@ -1,4 +1,4 @@
-package com.dragon.repositories;
+package com.dragon.dungeon.repositories;
 
 import java.util.UUID;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.dragon.dungeon.entities.UserEntity;
 
 @Repository
-public interface PlayersRepo extends JpaRepository<UserEntity, UUID>{
+public interface GamesRepo extends JpaRepository<UserEntity, UUID>{
+
 }
     

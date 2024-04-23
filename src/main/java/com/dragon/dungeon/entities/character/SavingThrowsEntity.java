@@ -6,6 +6,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class SavingThrowsEntity {
     
     @Id
@@ -23,20 +25,20 @@ public class SavingThrowsEntity {
     private UUID id;
 
     @Column(name = "isStrength", nullable = false)
-    private int isStrength;
+    private boolean isStrength;
     
     @Column(name = "isDexterity", nullable = false)
-    private int isDexterity;
+    private boolean isDexterity;
 
     @Column(name = "isConstitution", nullable = false)
-    private int isConstitution;
+    private boolean isConstitution;
 
     @Column(name = "isIntelligence", nullable = false)
-    private int isIntelligence;
+    private boolean isIntelligence;
 
     @Column(name = "isWisdom", nullable = false)
-    private int isWisdom;
+    private boolean isWisdom;
 
     @Column(name = "isCharisma", nullable = false)
-    private int isCharisma;
+    private boolean isCharisma;
 }

@@ -1,5 +1,7 @@
 package com.dragon.dungeon.dto.models;
 
+import java.util.UUID;
+
 import com.dragon.dungeon.entities.UserEntity;
 
 import lombok.AllArgsConstructor;
@@ -12,6 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserModel {
+
+    private UUID id;
 
     private String uName;
 

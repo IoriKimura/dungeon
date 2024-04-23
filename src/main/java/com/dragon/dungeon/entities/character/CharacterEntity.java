@@ -8,6 +8,7 @@ import com.dragon.dungeon.entities.UserEntity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatacterEntity {
+@Builder
+public class CharacterEntity {
 
     @Id
     @UuidGenerator
@@ -26,31 +28,31 @@ public class ChatacterEntity {
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
-    private UserEntity ownerId;
+    private UserEntity owner;
     
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stats_id", nullable = false)
-    private StatsEntity stratsId;
+    private StatsEntity stats;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "throws_id", nullable = false)
-    private SavingThrowsEntity throwsId;
+    private SavingThrowsEntity sThrows;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "skills_id", nullable = false)
-    private SkillsEntity skillsId;
+    private SkillsEntity skills;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id", nullable = false)
-    private InventoryEntity inventoryId;
+    private InventoryEntity inventory;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attack_id", nullable = false)
-    private AttackSpellsEntity attackId;
+    private AttackSpellsEntity attack;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feature_id", nullable = false)
-    private FeaturesEntity featuresId;
+    private FeaturesEntity features;
 
     @Column(name = "name", nullable = false)
     private String cName;
@@ -65,5 +67,5 @@ public class ChatacterEntity {
     private String background;
 
     @Column(name = "level")
-    private String level;
+    private int level;
 }

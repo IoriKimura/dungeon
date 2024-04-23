@@ -23,4 +23,5 @@ public class AuthController {
         return authService.register(request);
     }
 
+
 }

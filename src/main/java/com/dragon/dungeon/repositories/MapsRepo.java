@@ -1,4 +1,4 @@
-package com.dragon.repositories;
+package com.dragon.dungeon.repositories;
 
 import java.util.UUID;
 
