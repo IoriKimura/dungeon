@@ -34,7 +34,7 @@ public class CharacterModel {
 
     private String background;
 
-    private String level;
+    private int level;
 
     public static CharacterModel fromEntity(CharacterEntity character){
         return CharacterModel.builder()

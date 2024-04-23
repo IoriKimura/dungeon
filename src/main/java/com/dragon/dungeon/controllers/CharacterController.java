@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dragon.dungeon.dao.CharacterDao;
 import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
 import com.dragon.dungeon.dto.request.AddCharacterRequest;
 import com.dragon.dungeon.entities.character.CharacterEntity;
-import com.dragon.repositories.character.CharacterRepo;
+import com.dragon.dungeon.repositories.character.CharacterRepo;
+import com.dragon.dungeon.services.character.CharacterService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,18 +25,19 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("v1/collection")
 public class CharacterController {
 
-    private CharacterService characterService;
+    private final CharacterService characterService;
 
-    private CharacterRepo characterRepo;
+    private final CharacterDao characterDao;
+
+    private final CharacterRepo characterRepo;
 
     @GetMapping("")
-    public CharacterEntity getAllCharacters(){
-        return characterRepo.findAll().get(0);
+    public CharacterModel getAllCharacters(){
+        return CharacterModel.fromEntity(characterRepo.findAll().get(0));
     }
 
     @PostMapping("/create")
     public CharacterModel createCharacter(@RequestBody AddCharacterRequest request){
-
         return characterService.create(request);
     }
     

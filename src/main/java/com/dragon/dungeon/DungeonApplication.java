@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
-@EnableJpaRepositories("com.dragon.repositories")
+@EnableJpaRepositories("com.dragon.dungeon.repositories")
 @EntityScan("com.dragon.dungeon.entities")
 public class DungeonApplication {
 

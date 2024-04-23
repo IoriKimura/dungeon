@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.dragon.dungeon.dto.models.UserModel;
 import com.dragon.dungeon.entities.UserEntity;
-import com.dragon.repositories.UserRepo;
+import com.dragon.dungeon.repositories.UserRepo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,5 +28,11 @@ public class UserDao {
                 .build();
         return UserModel.fromEntity(userRepo.save(user));
     }
+
+    public UserEntity getUserEntityByEmail(String uMail){
+        return userRepo.findByuMail(uMail).orElseThrow();
+    }
+
+
 
 }

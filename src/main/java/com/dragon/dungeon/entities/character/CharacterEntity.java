@@ -66,7 +66,6 @@ public class CharacterEntity {
     @Column(name = "background")
     private String background;
 
-    // ПЕРЕДЕЛАТЬ В ИНТЕДЖЕР
     @Column(name = "level")
-    private String level;
+    private int level;
 }

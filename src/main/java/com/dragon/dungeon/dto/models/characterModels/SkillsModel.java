@@ -54,28 +54,28 @@ public class SkillsModel {
 
     private int survival;
 
-    public static SkillsModel fromEntity(SkillsEntity skils){
+    public static SkillsModel fromEntity(SkillsEntity skills){
         
         return SkillsModel.builder()
-            .id(skils.getId())
-            .acrobatics(skils.getAcrobatics())
-            .animalH(skils.getAnimalH())
-            .arcana(skils.getArcana())
-            .athletics(skils.getAthletics())
-            .deception(skils.getDeception())
-            .history(skils.getHistory())
-            .insight(skils.getInsight())
-            .intimidation(skils.getIntimidation())
-            .investigation(skils.getInvestigation())
-            .medicine(skils.getMedicine())
-            .nature(skils.getNature())
-            .perception(skils.getPerception())
-            .performance(skils.getPerformance())
-            .persuasion(skils.getPersuasion())
-            .religion(skils.getReligion())
-            .sleighH(skils.getSleighH())
-            .stealth(skils.getStealth())
-            .survival(skils.getSurvival())
+            .id(skills.getId())
+            .acrobatics(skills.getAcrobatics())
+            .animalH(skills.getAnimalH())
+            .arcana(skills.getArcana())
+            .athletics(skills.getAthletics())
+            .deception(skills.getDeception())
+            .history(skills.getHistory())
+            .insight(skills.getInsight())
+            .intimidation(skills.getIntimidation())
+            .investigation(skills.getInvestigation())
+            .medicine(skills.getMedicine())
+            .nature(skills.getNature())
+            .perception(skills.getPerception())
+            .performance(skills.getPerformance())
+            .persuasion(skills.getPersuasion())
+            .religion(skills.getReligion())
+            .sleighH(skills.getSleighH())
+            .stealth(skills.getStealth())
+            .survival(skills.getSurvival())
             .build();
     }
     

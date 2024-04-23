@@ -14,6 +14,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class AddCharacterRequest {
 
+    private final String uMail;
+
     private final String cName;
 
     private final String cRace;
@@ -22,7 +24,7 @@ public class AddCharacterRequest {
 
     private final String background;
 
-    private final String level;
+    private final int level;
     
     private final StatsModel stats;
 

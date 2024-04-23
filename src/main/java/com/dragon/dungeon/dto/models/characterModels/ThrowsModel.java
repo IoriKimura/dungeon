@@ -17,28 +17,28 @@ public class ThrowsModel {
 
     private UUID id;
 
-    private int isStrength;
+    private boolean isStrength;
     
-    private int isDexterity;
+    private boolean isDexterity;
 
-    private int isConstitution;
+    private boolean isConstitution;
 
-    private int isIntelligence;
+    private boolean isIntelligence;
 
-    private int isWisdom;
+    private boolean isWisdom;
 
-    private int isCharisma;
+    private boolean isCharisma;
 
     public static ThrowsModel fromEntity(SavingThrowsEntity throwsFromDb){
         
         return ThrowsModel.builder()
             .id(throwsFromDb.getId())
-            .isStrength(throwsFromDb.getIsStrength())
-            .isDexterity(throwsFromDb.getIsDexterity())
-            .isConstitution(throwsFromDb.getIsConstitution())
-            .isIntelligence(throwsFromDb.getIsIntelligence())
-            .isWisdom(throwsFromDb.getIsWisdom())
-            .isCharisma(throwsFromDb.getIsCharisma())
+            .isStrength(throwsFromDb.isStrength())
+            .isDexterity(throwsFromDb.isDexterity())
+            .isConstitution(throwsFromDb.isConstitution())
+            .isIntelligence(throwsFromDb.isIntelligence())
+            .isWisdom(throwsFromDb.isWisdom())
+            .isCharisma(throwsFromDb.isCharisma())
             .build();
     }
     
