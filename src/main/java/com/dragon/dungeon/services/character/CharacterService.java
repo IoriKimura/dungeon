@@ -10,5 +10,7 @@ public interface CharacterService {
     CharacterModel create(AddCharacterRequest request);
 
     CollectionResponse getCollection(CollectionRequest request);
+
+    CharacterModel getCharacter(String uMail, String cId);
     
 }

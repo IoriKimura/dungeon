@@ -2,11 +2,13 @@ package com.dragon.dungeon.dao.character;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
 import com.dragon.dungeon.dto.models.CollectionModel;
 import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
+import com.dragon.dungeon.entities.UserEntity;
 import com.dragon.dungeon.entities.character.CharacterEntity;
 import com.dragon.dungeon.repositories.UserRepo;
 import com.dragon.dungeon.repositories.character.CharacterRepo;
@@ -35,6 +37,15 @@ public class CharacterDao {
         }
         return collection;
         
+    }
+
+    public CharacterModel getCharacter(UserEntity user, String cId) {
+        CharacterEntity characterEntity = characterRepo.getReferenceById(UUID.fromString(cId));
+        if (user.equals(characterEntity.getOwner())){
+            return CharacterModel.fromEntity(characterRepo.getReferenceById(UUID.fromString(cId)));
+        }
+        else
+            return null;
     }
 
 }

@@ -20,36 +20,29 @@ public class MapModel {
 
     private UUID id;
 
-    private UserModel owner;
+    private UUID owner;
 
-    private String data;
-
-
-    //Добавить данные карты
+    private JsonNode data;
 
     public static MapModel fromEntity(MapEntity map){
         return MapModel.builder()
             .id(map.getId())
-            .owner(UserModel.fromEntity(map.getOwnerId()))
+            .owner(map.getOwnerId().getUserId())
             .data(clearDataMap(map.getData()))
             .build();
     }
 
-    private static String clearDataMap(String data){
+    private static JsonNode clearDataMap(String data){
             ObjectMapper objectMapper = new ObjectMapper();
 
             JsonNode jsonNode;
             try {
-                jsonNode = objectMapper.readTree(data);
-                String dataValue = jsonNode.get("data").asText();
-                return dataValue;
+                jsonNode = objectMapper.readTree(data).get("data");
+                return jsonNode;
             } catch (JsonProcessingException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 return null;
             }
-
-            // Получение значения поля "data"
     }
     
 }

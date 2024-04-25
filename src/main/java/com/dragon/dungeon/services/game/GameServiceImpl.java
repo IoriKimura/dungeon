@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.dragon.dungeon.dao.GameDao;
 import com.dragon.dungeon.dto.models.GameModel;
 import com.dragon.dungeon.dto.request.CreateGameRequest;
-import com.dragon.dungeon.entities.GameEntity;
+import com.dragon.dungeon.dto.response.CreateGameResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,9 +16,15 @@ public class GameServiceImpl implements GameService{
     private final GameDao gameDao;
 
     @Override
-    public GameModel createGame(CreateGameRequest request) {
+    public CreateGameResponse createGame(CreateGameRequest request) {
+        
+        GameModel game = gameDao.createGame(request);
 
-        return gameDao.createGame(request);
+        return CreateGameResponse.builder()
+            .id(game.getId())
+            .owner(game.getPlayers().get(0).getUser().getId())
+            .map(game.getMap())
+        .build();
     }
     
 }

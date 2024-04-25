@@ -7,6 +7,8 @@ import com.dragon.dungeon.repositories.UserRepo;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,9 +21,9 @@ public class TestController {
     private final UserRepo userRepo;
 
     @GetMapping("")
-    public UserEntity getUserList(){
+    public List<UserEntity> getUserList(){
 
-        return userRepo.findAll().get(0);
+        return userRepo.findAll();
     } 
 
     @GetMapping("/info")

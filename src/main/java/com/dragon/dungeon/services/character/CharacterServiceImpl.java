@@ -86,5 +86,11 @@ public class CharacterServiceImpl implements CharacterService {
         .collection(characterDao.getCollection(request.getUMail()))
         .build();
     }
+
+    @Override
+    public CharacterModel getCharacter(String uMail, String cId) {
+        UserEntity user = userDao.getUserEntityByEmail(uMail);
+        return characterDao.getCharacter(user, cId);
+    }
     
 }
