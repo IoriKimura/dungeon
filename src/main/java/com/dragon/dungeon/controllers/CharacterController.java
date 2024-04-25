@@ -1,21 +1,19 @@
 package com.dragon.dungeon.controllers;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
-import org.hibernate.mapping.List;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dragon.dungeon.dao.CharacterDao;
 import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
 import com.dragon.dungeon.dto.request.AddCharacterRequest;
-import com.dragon.dungeon.entities.character.CharacterEntity;
-import com.dragon.dungeon.repositories.character.CharacterRepo;
+import com.dragon.dungeon.dto.request.CollectionRequest;
+import com.dragon.dungeon.dto.response.CollectionResponse;
 import com.dragon.dungeon.services.character.CharacterService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,19 +24,25 @@ import lombok.RequiredArgsConstructor;
 public class CharacterController {
 
     private final CharacterService characterService;
-
-    private final CharacterDao characterDao;
-
-    private final CharacterRepo characterRepo;
-
-    @GetMapping("")
-    public CharacterModel getAllCharacters(){
-        return CharacterModel.fromEntity(characterRepo.findAll().get(0));
+    
+    @PostMapping("")
+    public ResponseEntity<CollectionResponse> getAllCharacters(@RequestBody CollectionRequest request){
+        return ResponseEntity.status(HttpStatus.FOUND).body(characterService.getCollection(request));
     }
 
     @PostMapping("/create")
-    public CharacterModel createCharacter(@RequestBody AddCharacterRequest request){
-        return characterService.create(request);
+    public ResponseEntity<CharacterModel> createCharacter(@RequestBody AddCharacterRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(characterService.create(request));
+    }
+
+    @GetMapping("/character")
+    public ResponseEntity<CharacterModel> getCharacter(@RequestParam String uMail, @RequestParam String cId){
+        CharacterModel character = characterService.getCharacter(uMail, cId);
+        if (character != null)
+            return ResponseEntity.status(HttpStatus.FOUND).body(character);
+        else
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(character);
+
     }
     
 }

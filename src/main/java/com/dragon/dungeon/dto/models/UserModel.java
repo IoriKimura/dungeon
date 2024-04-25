@@ -25,6 +25,7 @@ public class UserModel {
 
     public static UserModel fromEntity(UserEntity user){
         return UserModel.builder()
+            .id(user.getUserId())
             .uName(user.getUName())
             .uMail(user.getUMail())
             .uPwd(user.getUPwd())

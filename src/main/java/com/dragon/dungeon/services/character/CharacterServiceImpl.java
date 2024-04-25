@@ -2,16 +2,18 @@ package com.dragon.dungeon.services.character;
 
 import org.springframework.stereotype.Service;
 
-import com.dragon.dungeon.dao.AttackSpellsDao;
-import com.dragon.dungeon.dao.CharacterDao;
-import com.dragon.dungeon.dao.FeaturesDao;
-import com.dragon.dungeon.dao.InventoryDao;
-import com.dragon.dungeon.dao.SkillsDao;
-import com.dragon.dungeon.dao.StatsDao;
-import com.dragon.dungeon.dao.ThrowsDao;
 import com.dragon.dungeon.dao.UserDao;
+import com.dragon.dungeon.dao.character.AttackSpellsDao;
+import com.dragon.dungeon.dao.character.CharacterDao;
+import com.dragon.dungeon.dao.character.FeaturesDao;
+import com.dragon.dungeon.dao.character.InventoryDao;
+import com.dragon.dungeon.dao.character.SkillsDao;
+import com.dragon.dungeon.dao.character.StatsDao;
+import com.dragon.dungeon.dao.character.ThrowsDao;
 import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
 import com.dragon.dungeon.dto.request.AddCharacterRequest;
+import com.dragon.dungeon.dto.request.CollectionRequest;
+import com.dragon.dungeon.dto.response.CollectionResponse;
 import com.dragon.dungeon.entities.UserEntity;
 import com.dragon.dungeon.entities.character.AttackSpellsEntity;
 import com.dragon.dungeon.entities.character.CharacterEntity;
@@ -20,8 +22,6 @@ import com.dragon.dungeon.entities.character.InventoryEntity;
 import com.dragon.dungeon.entities.character.SavingThrowsEntity;
 import com.dragon.dungeon.entities.character.SkillsEntity;
 import com.dragon.dungeon.entities.character.StatsEntity;
-import com.dragon.dungeon.repositories.UserRepo;
-import com.dragon.dungeon.services.stats.StatsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -78,6 +78,19 @@ public class CharacterServiceImpl implements CharacterService {
             .build();
 
         return characterDao.saveCharacter(character);
+    }
+
+    @Override
+    public CollectionResponse getCollection(CollectionRequest request) {
+        return CollectionResponse.builder()
+        .collection(characterDao.getCollection(request.getUMail()))
+        .build();
+    }
+
+    @Override
+    public CharacterModel getCharacter(String uMail, String cId) {
+        UserEntity user = userDao.getUserEntityByEmail(uMail);
+        return characterDao.getCharacter(user, cId);
     }
     
 }

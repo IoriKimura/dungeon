@@ -25,7 +25,7 @@ public class GameEntity {
     @UuidGenerator
     private UUID id;
 
-    @OneToMany(mappedBy = "gameId")
+    @OneToMany(mappedBy = "gameId", fetch = FetchType.LAZY)
     // @JoinColumn(name = "ownerId", nullable = false)
     private List<PlayersEntity> ownerId;
 

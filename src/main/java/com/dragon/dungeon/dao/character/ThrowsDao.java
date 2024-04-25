@@ -1,4 +1,4 @@
-package com.dragon.dungeon.dao;
+package com.dragon.dungeon.dao.character;
 
 import org.springframework.stereotype.Component;
 

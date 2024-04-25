@@ -1,6 +1,7 @@
 package com.dragon.dungeon.dto.models.characterModels;
 
-import com.dragon.dungeon.dto.models.UserModel;
+import java.util.UUID;
+
 import com.dragon.dungeon.entities.character.CharacterEntity;
 
 
@@ -12,7 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 public class CharacterModel {
 
-    private UserModel owner;
+    private UUID id;
     
     private StatsModel stats;
 
@@ -38,7 +39,7 @@ public class CharacterModel {
 
     public static CharacterModel fromEntity(CharacterEntity character){
         return CharacterModel.builder()
-                .owner(UserModel.fromEntity(character.getOwner()))
+                .id(character.getId())
                 .stats(StatsModel.fromEntity(character.getStats()))
                 .sThrows(ThrowsModel.fromEntity(character.getSThrows()))
                 .skills(SkillsModel.fromEntity(character.getSkills()))
