@@ -2,14 +2,14 @@ package com.dragon.dungeon.services.character;
 
 import org.springframework.stereotype.Service;
 
-import com.dragon.dungeon.dao.AttackSpellsDao;
-import com.dragon.dungeon.dao.CharacterDao;
-import com.dragon.dungeon.dao.FeaturesDao;
-import com.dragon.dungeon.dao.InventoryDao;
-import com.dragon.dungeon.dao.SkillsDao;
-import com.dragon.dungeon.dao.StatsDao;
-import com.dragon.dungeon.dao.ThrowsDao;
 import com.dragon.dungeon.dao.UserDao;
+import com.dragon.dungeon.dao.character.AttackSpellsDao;
+import com.dragon.dungeon.dao.character.CharacterDao;
+import com.dragon.dungeon.dao.character.FeaturesDao;
+import com.dragon.dungeon.dao.character.InventoryDao;
+import com.dragon.dungeon.dao.character.SkillsDao;
+import com.dragon.dungeon.dao.character.StatsDao;
+import com.dragon.dungeon.dao.character.ThrowsDao;
 import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
 import com.dragon.dungeon.dto.request.AddCharacterRequest;
 import com.dragon.dungeon.dto.request.CollectionRequest;

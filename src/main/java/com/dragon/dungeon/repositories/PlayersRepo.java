@@ -1,13 +1,12 @@
 package com.dragon.dungeon.repositories;
 
-import java.util.UUID;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dragon.dungeon.entities.UserEntity;
+import com.dragon.dungeon.entities.PlayersEntity;
+import com.dragon.dungeon.entities.PlayersId;
 
 @Repository
-public interface PlayersRepo extends JpaRepository<UserEntity, UUID>{
+public interface PlayersRepo extends JpaRepository<PlayersEntity, PlayersId>{
 }
     

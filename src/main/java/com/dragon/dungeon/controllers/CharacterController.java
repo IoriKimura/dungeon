@@ -1,8 +1,5 @@
 package com.dragon.dungeon.controllers;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +19,6 @@ import lombok.RequiredArgsConstructor;
 public class CharacterController {
 
     private final CharacterService characterService;
-
-    // @PostMapping("")
-    // public ResponseEntity<CollectionResponse> getAllCharacters(@RequestBody CollectionRequest request){
-    //     return ResponseEntity.status(HttpStatus.OK).body(characterService.getCollection(request));
-    // }
     
     @PostMapping("")
     public CollectionResponse getAllCharacters(@RequestBody CollectionRequest request){
