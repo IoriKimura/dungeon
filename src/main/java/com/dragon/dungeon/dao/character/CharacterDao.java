@@ -2,6 +2,7 @@ package com.dragon.dungeon.dao.character;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
@@ -29,18 +30,22 @@ public class CharacterDao {
     }
 
     public List<CollectionModel> getCollection(String uMail){
-
-        List<CharacterEntity> characterEntities = characterRepo.findByOwner(userRepo.findByuMail(uMail).get());
-        List<CollectionModel> collection = new ArrayList<>();
-        for(int i = 0; i < characterEntities.size(); i++){
-            collection.add(CollectionModel.fromEntity(characterEntities.get(i)));
+        try {
+                List<CharacterEntity> characterEntities = characterRepo.findByOwner(userRepo.findByuMail(uMail).get());
+                List<CollectionModel> collection = new ArrayList<>();
+                for(int i = 0; i < characterEntities.size(); i++){
+                    collection.add(CollectionModel.fromEntity(characterEntities.get(i)));
+                }
+                return collection;
+        } catch (NoSuchElementException e) {
+            return null;
         }
-        return collection;
-        
     }
 
     public CharacterModel getCharacter(UserEntity user, String cId) {
         CharacterEntity characterEntity = characterRepo.getReferenceById(UUID.fromString(cId));
+        
+        // Проверяем, является ли пользователь, что отправил запрос, владельцем персонажа
         if (user.equals(characterEntity.getOwner())){
             return CharacterModel.fromEntity(characterRepo.getReferenceById(UUID.fromString(cId)));
         }

@@ -1,6 +1,11 @@
 package com.dragon.dungeon.dto.models;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.UUID;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.dragon.dungeon.entities.UserEntity;
 
@@ -13,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserModel {
+public class UserModel implements UserDetails{
 
     private UUID id;
 
@@ -30,6 +35,42 @@ public class UserModel {
             .uMail(user.getUMail())
             .uPwd(user.getUPwd())
             .build();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.emptyList();
+        
+    }
+
+    @Override
+    public String getPassword() {
+        return uPwd;
+    }
+
+    @Override
+    public String getUsername() {
+        return uMail;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
     
 }
