@@ -14,6 +14,7 @@ import com.dragon.dungeon.entities.character.CharacterEntity;
 import com.dragon.dungeon.repositories.UserRepo;
 import com.dragon.dungeon.repositories.character.CharacterRepo;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Component
@@ -30,27 +31,24 @@ public class CharacterDao {
     }
 
     public List<CollectionModel> getCollection(String uMail){
-        try {
-                List<CharacterEntity> characterEntities = characterRepo.findByOwner(userRepo.findByuMail(uMail).get());
-                List<CollectionModel> collection = new ArrayList<>();
-                for(int i = 0; i < characterEntities.size(); i++){
-                    collection.add(CollectionModel.fromEntity(characterEntities.get(i)));
-                }
-                return collection;
-        } catch (NoSuchElementException e) {
-            return null;
+        List<CharacterEntity> characterEntities = characterRepo.findByOwner(userRepo.findByuMail(uMail).get());
+        List<CollectionModel> collection = new ArrayList<>();
+        for(int i = 0; i < characterEntities.size(); i++){
+            collection.add(CollectionModel.fromEntity(characterEntities.get(i)));
         }
+        return collection;
     }
 
     public CharacterModel getCharacter(UserEntity user, String cId) {
         CharacterEntity characterEntity = characterRepo.getReferenceById(UUID.fromString(cId));
-        
         // Проверяем, является ли пользователь, что отправил запрос, владельцем персонажа
         if (user.equals(characterEntity.getOwner())){
-            return CharacterModel.fromEntity(characterRepo.getReferenceById(UUID.fromString(cId)));
+            return CharacterModel.fromEntity(characterEntity);
         }
         else
             return null;
+        
+
     }
 
 }

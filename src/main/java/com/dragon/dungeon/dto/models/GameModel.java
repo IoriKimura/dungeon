@@ -7,13 +7,11 @@ import java.util.UUID;
 
 import com.dragon.dungeon.entities.GameEntity;
 import com.dragon.dungeon.entities.PlayersEntity;
-import com.dragon.dungeon.repositories.PlayersRepo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @Builder
@@ -35,5 +33,19 @@ public class GameModel {
             .players(PlayersModel.listFromEntity(player))
             .map(MapModel.fromEntity(game.getMapId()))
         .build();
+    }
+
+    public static List<GameModel> listFromListOfEntity(List<GameEntity> games){
+        List<GameModel> listOfGames = new ArrayList<>();
+        for (GameEntity game : games) {
+            GameModel gameModel = GameModel.builder()
+                    //.game(player.getGameId())
+                    .id(game.getId())
+                    .map(MapModel.fromEntity(game.getMapId()))
+                    .players(PlayersModel.listFromListOfEntity(game.getOwnerId()))
+                    .build();
+                    listOfGames.add(gameModel);
+        }
+        return listOfGames;
     }
 }

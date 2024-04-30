@@ -17,8 +17,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PlayersModel {
 
-    //private GameEntity game;
-
     private UserModel user;
 
     public static List<PlayersModel> listFromListOfEntity(List<PlayersEntity> players){
@@ -36,7 +34,6 @@ public class PlayersModel {
     public static List<PlayersModel> listFromEntity(PlayersEntity owner) {
         List<PlayersModel> listOfPlayers = new ArrayList<>();
         PlayersModel playersModel = PlayersModel.builder()
-                //.game(owner.getGameId())
                 .user(UserModel.fromEntity(owner.getPlayerId()))
                 .build();
         listOfPlayers.add(playersModel);

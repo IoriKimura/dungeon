@@ -1,15 +1,17 @@
 package com.dragon.dungeon.dto.request;
 
-import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class CreateGameRequest {
-    
-    private final String uMail;
 
-    private final String mapId;
+    private String mapId;
+
+     @JsonCreator
+    public CreateGameRequest(@JsonProperty("mapId") String mapId){
+        this.mapId = mapId;
+    }
 }

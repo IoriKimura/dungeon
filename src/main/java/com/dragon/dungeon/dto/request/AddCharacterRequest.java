@@ -14,8 +14,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class AddCharacterRequest {
 
-    private final String uMail;
-
     private final String cName;
 
     private final String cRace;
