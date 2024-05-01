@@ -14,7 +14,6 @@ import com.dragon.dungeon.entities.character.CharacterEntity;
 import com.dragon.dungeon.repositories.UserRepo;
 import com.dragon.dungeon.repositories.character.CharacterRepo;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Component

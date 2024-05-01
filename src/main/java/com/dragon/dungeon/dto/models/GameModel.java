@@ -25,7 +25,7 @@ public class GameModel {
 
     private MapModel map;
 
-    public static GameModel fromEntity(GameEntity game, PlayersEntity player){
+    public static GameModel fromGameAndPlayers(GameEntity game, PlayersEntity player){
         List<PlayersEntity> players = new ArrayList<>() ;
         players.add(player);
         return GameModel.builder()
@@ -39,7 +39,6 @@ public class GameModel {
         List<GameModel> listOfGames = new ArrayList<>();
         for (GameEntity game : games) {
             GameModel gameModel = GameModel.builder()
-                    //.game(player.getGameId())
                     .id(game.getId())
                     .map(MapModel.fromEntity(game.getMapId()))
                     .players(PlayersModel.listFromListOfEntity(game.getOwnerId()))
@@ -47,5 +46,13 @@ public class GameModel {
                     listOfGames.add(gameModel);
         }
         return listOfGames;
+    }
+
+    public static GameModel fromEntity(GameEntity game) {
+        return GameModel.builder()
+            .id(game.getId())
+            .players(PlayersModel.listFromListOfEntity(game.getOwnerId()))
+            .map(MapModel.fromEntity(game.getMapId()))
+        .build();
     }
 }

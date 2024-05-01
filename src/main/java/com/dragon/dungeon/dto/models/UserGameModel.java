@@ -23,6 +23,8 @@ public class UserGameModel {
 
     private String uName;
 
+    private boolean isMaster;
+
 
     // public static UserGameModel fromEntity(UserEntity user){
     //     return UserGameModel.builder()
@@ -38,8 +40,23 @@ public class UserGameModel {
                     //.game(player.getGameId())
                     .id(player.getPlayerId().getUserId())
                     .uName(player.getPlayerId().getUName())
+                    .isMaster(player.isMaster())
                     .build();
             listOfPlayers.add(playersModel);
+        }
+        return listOfPlayers;
+    }
+
+    public static List<UserGameModel> listFromModel(List<PlayersModel> players){
+        List<UserGameModel> listOfPlayers = new ArrayList<>();
+        for (PlayersModel player : players) {
+            UserGameModel playerModel = UserGameModel.builder()
+                    //.game(player.getGameId())
+                    .id(player.getUser().getId())
+                    .uName(player.getUser().getUName())
+                    .isMaster(player.isMaster())
+                    .build();
+            listOfPlayers.add(playerModel);
         }
         return listOfPlayers;
     }

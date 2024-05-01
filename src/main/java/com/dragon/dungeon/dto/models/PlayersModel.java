@@ -19,12 +19,15 @@ public class PlayersModel {
 
     private UserModel user;
 
+    private boolean isMaster;
+
     public static List<PlayersModel> listFromListOfEntity(List<PlayersEntity> players){
         List<PlayersModel> listOfPlayers = new ArrayList<>();
         for (PlayersEntity player : players) {
             PlayersModel playersModel = PlayersModel.builder()
                     //.game(player.getGameId())
                     .user(UserModel.fromEntity(player.getPlayerId()))
+                    .isMaster(player.isMaster())
                     .build();
             listOfPlayers.add(playersModel);
         }
@@ -35,6 +38,7 @@ public class PlayersModel {
         List<PlayersModel> listOfPlayers = new ArrayList<>();
         PlayersModel playersModel = PlayersModel.builder()
                 .user(UserModel.fromEntity(owner.getPlayerId()))
+                .isMaster(owner.isMaster())
                 .build();
         listOfPlayers.add(playersModel);
         return listOfPlayers;
