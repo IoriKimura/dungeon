@@ -7,13 +7,11 @@ import java.util.UUID;
 
 import com.dragon.dungeon.entities.GameEntity;
 import com.dragon.dungeon.entities.PlayersEntity;
-import com.dragon.dungeon.repositories.PlayersRepo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @Builder
@@ -27,12 +25,33 @@ public class GameModel {
 
     private MapModel map;
 
-    public static GameModel fromEntity(GameEntity game, PlayersEntity player){
+    public static GameModel fromGameAndPlayers(GameEntity game, PlayersEntity player){
         List<PlayersEntity> players = new ArrayList<>() ;
         players.add(player);
         return GameModel.builder()
             .id(game.getId())
             .players(PlayersModel.listFromEntity(player))
+            .map(MapModel.fromEntity(game.getMapId()))
+        .build();
+    }
+
+    public static List<GameModel> listFromListOfEntity(List<GameEntity> games){
+        List<GameModel> listOfGames = new ArrayList<>();
+        for (GameEntity game : games) {
+            GameModel gameModel = GameModel.builder()
+                    .id(game.getId())
+                    .map(MapModel.fromEntity(game.getMapId()))
+                    .players(PlayersModel.listFromListOfEntity(game.getOwnerId()))
+                    .build();
+                    listOfGames.add(gameModel);
+        }
+        return listOfGames;
+    }
+
+    public static GameModel fromEntity(GameEntity game) {
+        return GameModel.builder()
+            .id(game.getId())
+            .players(PlayersModel.listFromListOfEntity(game.getOwnerId()))
             .map(MapModel.fromEntity(game.getMapId()))
         .build();
     }

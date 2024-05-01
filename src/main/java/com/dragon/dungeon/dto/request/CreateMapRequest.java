@@ -1,13 +1,18 @@
 package com.dragon.dungeon.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class CreateMapRequest {
-    
-    private final String uMail;
 
-    private final String data;
+    private String data;
+
+    @JsonCreator
+    public CreateMapRequest(@JsonProperty("data") String data){
+        this.data = data;
+    }
 }

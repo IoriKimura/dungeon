@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PlayersModel {
 
-    //private GameEntity game;
-
     private UserModel user;
+
+    private boolean isMaster;
 
     public static List<PlayersModel> listFromListOfEntity(List<PlayersEntity> players){
         List<PlayersModel> listOfPlayers = new ArrayList<>();
@@ -27,6 +27,7 @@ public class PlayersModel {
             PlayersModel playersModel = PlayersModel.builder()
                     //.game(player.getGameId())
                     .user(UserModel.fromEntity(player.getPlayerId()))
+                    .isMaster(player.isMaster())
                     .build();
             listOfPlayers.add(playersModel);
         }
@@ -36,8 +37,8 @@ public class PlayersModel {
     public static List<PlayersModel> listFromEntity(PlayersEntity owner) {
         List<PlayersModel> listOfPlayers = new ArrayList<>();
         PlayersModel playersModel = PlayersModel.builder()
-                //.game(owner.getGameId())
                 .user(UserModel.fromEntity(owner.getPlayerId()))
+                .isMaster(owner.isMaster())
                 .build();
         listOfPlayers.add(playersModel);
         return listOfPlayers;

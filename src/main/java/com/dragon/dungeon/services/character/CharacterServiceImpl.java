@@ -46,9 +46,9 @@ public class CharacterServiceImpl implements CharacterService {
     private final CharacterDao characterDao;
     
     @Override
-    public CharacterModel create(AddCharacterRequest request) {
+    public CharacterModel create(AddCharacterRequest request, String uMail) {
 
-        UserEntity user = userDao.getUserEntityByEmail(request.getUMail());
+        UserEntity user = userDao.getUserEntityByEmail(uMail);
 
         StatsEntity stats = statsDao.saveEntity(request.getStats());
 
@@ -81,9 +81,9 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
-    public CollectionResponse getCollection(CollectionRequest request) {
+    public CollectionResponse getCollection(String uMail) {
         return CollectionResponse.builder()
-        .collection(characterDao.getCollection(request.getUMail()))
+        .collection(characterDao.getCollection(uMail))
         .build();
     }
 

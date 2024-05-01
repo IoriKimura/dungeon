@@ -27,5 +27,8 @@ public class PlayersEntity {
     @ManyToOne
     @JoinColumn(name = "playerId")
     private UserEntity playerId;
+
+    @Column(name = "isMaster", nullable = false)
+    private boolean isMaster;
 }
 
