@@ -38,28 +38,22 @@ public class JwtFilter extends OncePerRequestFilter {
         String jwt = getToken(request);
 
         if(Objects.isNull(jwt)){
-            // log.info("No jwt in header");
             filterChain.doFilter(request, response);
             return;
         }
-
-        //log.info("Get jwt {}", jwt);
 
         UserModel user;
 
         user = jwtService.parseToken(jwt);
 
         if(Objects.isNull(user)){
-            //log.info("No valid user in jwt {}", jwt);
             filterChain.doFilter(request, response);
             return;
         }
 
-        // log.info("Get user from jwt {}", user);
 
 
         if(!userDao.userExistByEmail(user.getUMail())){
-            //log.info("User {} does not exists", user);
             filterChain.doFilter(request, response);
             return;
         }
@@ -67,8 +61,6 @@ public class JwtFilter extends OncePerRequestFilter {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                 user.getUsername(), null, user.getAuthorities()
         );
-
-        //log.info("Authentication user {}", user.getUsername());
 
         SecurityContextHolder.getContext().setAuthentication(token);
 

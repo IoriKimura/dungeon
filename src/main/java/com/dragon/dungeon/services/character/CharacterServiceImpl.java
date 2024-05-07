@@ -12,7 +12,6 @@ import com.dragon.dungeon.dao.character.StatsDao;
 import com.dragon.dungeon.dao.character.ThrowsDao;
 import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
 import com.dragon.dungeon.dto.request.AddCharacterRequest;
-import com.dragon.dungeon.dto.request.CollectionRequest;
 import com.dragon.dungeon.dto.response.CollectionResponse;
 import com.dragon.dungeon.entities.UserEntity;
 import com.dragon.dungeon.entities.character.AttackSpellsEntity;

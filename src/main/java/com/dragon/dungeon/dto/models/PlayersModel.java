@@ -3,7 +3,6 @@ package com.dragon.dungeon.dto.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dragon.dungeon.entities.GameEntity;
 import com.dragon.dungeon.entities.PlayersEntity;
 
 import lombok.AllArgsConstructor;

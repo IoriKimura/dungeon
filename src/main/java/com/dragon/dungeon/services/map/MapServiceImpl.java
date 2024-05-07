@@ -1,7 +1,5 @@
 package com.dragon.dungeon.services.map;
 
-import java.util.UUID;
-
 import org.springframework.stereotype.Service;
 
 import com.dragon.dungeon.dao.MapsDao;

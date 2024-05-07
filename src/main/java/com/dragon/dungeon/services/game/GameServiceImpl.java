@@ -5,13 +5,11 @@ import org.springframework.stereotype.Service;
 import com.dragon.dungeon.dao.GameDao;
 import com.dragon.dungeon.dao.PlayersDao;
 import com.dragon.dungeon.dto.models.GameModel;
-import com.dragon.dungeon.dto.models.UserGameModel;
 import com.dragon.dungeon.dto.request.AddPlayerRequest;
 import com.dragon.dungeon.dto.request.CreateGameRequest;
 import com.dragon.dungeon.dto.response.CreateGameResponse;
 import com.dragon.dungeon.dto.response.GameCollectionResponse;
 import com.dragon.dungeon.dto.response.GameResponse;
-import com.dragon.dungeon.entities.UserEntity;
 
 import lombok.RequiredArgsConstructor;
 

@@ -52,7 +52,6 @@ public class CharacterController {
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-    
     }
     
 }

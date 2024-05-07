@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import com.dragon.dungeon.entities.PlayersEntity;
-import com.dragon.dungeon.entities.UserEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,14 +23,6 @@ public class UserGameModel {
     private String uName;
 
     private boolean isMaster;
-
-
-    // public static UserGameModel fromEntity(UserEntity user){
-    //     return UserGameModel.builder()
-    //         .id(user.getUserId())
-    //         .uName(user.getUName())
-    //         .build();
-    // }
 
     public static List<UserGameModel> listFromListOfEntity(List<PlayersEntity> players){
         List<UserGameModel> listOfPlayers = new ArrayList<>();

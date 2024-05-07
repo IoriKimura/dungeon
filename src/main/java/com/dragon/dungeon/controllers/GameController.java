@@ -1,7 +1,6 @@
 package com.dragon.dungeon.controllers;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dragon.dungeon.dto.models.GameModel;
 import com.dragon.dungeon.dto.request.AddPlayerRequest;
 import com.dragon.dungeon.dto.request.CreateGameRequest;
-import com.dragon.dungeon.dto.response.CollectionResponse;
 import com.dragon.dungeon.dto.response.CreateGameResponse;
 import com.dragon.dungeon.dto.response.GameCollectionResponse;
 import com.dragon.dungeon.dto.response.GameResponse;
