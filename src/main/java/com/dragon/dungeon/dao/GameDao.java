@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.dragon.dungeon.dto.models.GameCollectionModel;
 import com.dragon.dungeon.dto.models.GameModel;
 import com.dragon.dungeon.dto.models.UserGameModel;
-import com.dragon.dungeon.dto.models.characterModels.CharacterModel;
 import com.dragon.dungeon.dto.request.CreateGameRequest;
 import com.dragon.dungeon.dto.response.GameResponse;
 import com.dragon.dungeon.entities.GameEntity;
@@ -67,7 +66,6 @@ public class GameDao {
 
     public List<GameCollectionModel> getCollection(UserEntity user) {
         try {
-            //UserEntity user = userRepo.findByuMail(uMail).orElseThrow();
 
             List<GameEntity> games = user.getGames();
 

@@ -1,8 +1,5 @@
 package com.dragon.dungeon.services.map;
 
-
-import java.util.UUID;
-
 import com.dragon.dungeon.dto.models.MapModel;
 import com.dragon.dungeon.dto.request.CreateMapRequest;
 import com.dragon.dungeon.dto.response.MapCollectionResponse;

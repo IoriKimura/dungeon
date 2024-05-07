@@ -1,20 +1,15 @@
 package com.dragon.dungeon.controllers;
 
-import java.util.UUID;
-
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dragon.dungeon.dto.models.MapModel;
-import com.dragon.dungeon.dto.models.UserModel;
 import com.dragon.dungeon.dto.request.CreateMapRequest;
 import com.dragon.dungeon.dto.response.MapCollectionResponse;
 import com.dragon.dungeon.services.map.MapService;
@@ -34,7 +29,6 @@ public class MapController {
         return mapService.create(request, uMail);
     }
 
-    // Добавить, проверку на пользователя
     @GetMapping("")
     public ResponseEntity<MapCollectionResponse> getMapCollection(@AuthenticationPrincipal String uMail){
         MapCollectionResponse collection = mapService.getCollection(uMail);

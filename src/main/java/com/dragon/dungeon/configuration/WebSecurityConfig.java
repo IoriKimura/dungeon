@@ -33,6 +33,9 @@ public class WebSecurityConfig {
                         .authorizeHttpRequests(config ->
                                 config.
                                         requestMatchers(HttpMethod.POST, "/v1/auth/**").permitAll()
+                                        .requestMatchers("/index.html").permitAll()
+                                        .requestMatchers("/app.js").permitAll()
+                                        .requestMatchers( "/gs-guide-websockets/**").permitAll()
                                         .requestMatchers(HttpMethod.POST, "/v1/auth/register").permitAll()
                                         // .requestMatchers("/swagger-ui/**").permitAll()
                                         // .requestMatchers("/v3/api-docs/**").permitAll()
